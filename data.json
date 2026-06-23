@@ -1,5 +1,22 @@
 {
   "expenses": [
-    
+    {
+      "id": 1,
+      "title": "Lunch",
+      "amount": 500,
+      "category": "Food"
+    },
+    {
+      "id": 3,
+      "title": "Phone",
+      "amount": 30000,
+      "category": "Electronics"
+    },
+    {
+      "id": 4,
+      "title": "Amusement Park",
+      "amount": 1000,
+      "category": "Entertainment"
+    }
   ]
 }
