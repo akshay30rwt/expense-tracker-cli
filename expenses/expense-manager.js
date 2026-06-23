@@ -14,7 +14,7 @@ function addExpense(title, amount, category) {
     const data = readData();
 
     const maxId = data.expenses.length > 0 
-    ? Math.max(...data.expenses.forEach(expense => expense.id))
+    ? Math.max(...data.expenses.map(expense => expense.id))
     : 0
 
     const newExpense = {
@@ -35,7 +35,7 @@ function viewExpenses() {
         return;
     }
 
-    data.expense.forEach(expense => {
+    data.expenses.forEach(expense => {
         console.log(`ID: ${expense.id} | Title: ${expense.title} | Amount: ${expense.amount} | Category: ${expense.category}`);
     });
 }
@@ -50,11 +50,15 @@ function deleteExpense(id) {
     }
     const deletedExpense = data.expenses[index];
     data.expenses.splice(index, 1);
+    writeData(data);
     console.log(`Expense: '${deletedExpense.title}' deleted successfully`);
 }
 
 function totalSpent() {
     const data = readData();
+    let spent = 0;
+    data.expenses.forEach(expense => spent += expense.amount);
+    console.log(`Total amount spent: ${spent}`);
 }
 
 module.exports = { addExpense, viewExpenses, deleteExpense, totalSpent };
